@@ -41,7 +41,7 @@ app.get('/api/story/:page', async (req, res, next) => {
         global.page += 1;
       }
     }
-    res.send({ data: global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))) })
+    res.send(global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))))
   } catch (error) {
     return next(error)
   }
@@ -61,7 +61,7 @@ app.post('/api/hide/:page/:objectID', async(req,res,next)=>{
         global.page += 1;
         global.pageCounter=0;
     }
-    res.send({ data: global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))) })
+    res.send(global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))))
   } catch (error) {
     return next(error)
   }
@@ -70,9 +70,9 @@ app.post('/api/hide/:page/:objectID', async(req,res,next)=>{
 app.get('/*', (req, res) => {
   const currentRoute = Routes.find(route => matchPath(req.url, route)) || {};
   let promise;
-
+  
   if (currentRoute.loadData) {
-    promise = currentRoute.loadData();
+    promise = currentRoute.loadData(req.url.substring(1));
   } else {
     promise = Promise.resolve(null);
   }

@@ -1,10 +1,9 @@
 import React from 'react';
 import loadData from './helpers/loadData';
 
-class Todos extends React.Component {
+class StoryBoard extends React.Component {
   constructor(props) {
     super(props);
-
     if (props.staticContext && props.staticContext.data) {
       this.state = {
         data: props.staticContext.data
@@ -24,9 +23,9 @@ class Todos extends React.Component {
         });
         delete window.__ROUTE_DATA__;
       } else {
-        loadData('todos').then(data => {
+        loadData(this.props.match.params.page).then(res => {
           this.setState({
-            data
+            data:res
           });
         });
       }
@@ -35,8 +34,8 @@ class Todos extends React.Component {
 
   render() {
     const { data } = this.state;
-    return <ul>{data.map(todo => <li key={todo.id}>{todo.title}</li>)}</ul>;
+    return <ul>{data.map(story => <li id={story.objectID}>{story.title}</li>)}</ul>;
   }
 }
 
-export default Todos;
+export default StoryBoard;

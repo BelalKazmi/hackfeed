@@ -1,12 +1,9 @@
 import 'isomorphic-fetch';
 
-export default resourceType => {
-  return fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+export default pageNumber => {
+  console.log('The routes--',pageNumber);
+  return fetch(`http://localhost:3005/api/story/${pageNumber}`)
     .then(res => {
-      return res.json();
-    })
-    .then(data => {
-      // only keep 10 first results
-      return data.filter((_, idx) => idx < 10);
+      return res.json()
     });
 };

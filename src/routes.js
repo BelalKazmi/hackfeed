@@ -1,8 +1,7 @@
 import loadData from './helpers/loadData';
 import Home from './Home';
 import NotFound from './NotFound';
-import Todos from './Todos';
-
+import StoryBoard from './StoryBoard';
 
 const Routes = [
   {
@@ -11,9 +10,9 @@ const Routes = [
     component: Home
   },
   {
-    path: '/todos',
-    component: Todos,
-    loadData: () => loadData('todos')
+    path: '/:page',
+    component: StoryBoard,
+    loadData: () => loadData('4')
   },
   {
     component: NotFound

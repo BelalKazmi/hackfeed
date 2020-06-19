@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Home from './Home';
-import Todos from './Todos';
+import StoryBoard from './StoryBoard';
 import NotFound from './NotFound';
 
 export default props => {
@@ -12,7 +12,7 @@ export default props => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/todos">Todos</NavLink>
+          <NavLink to="/1">Story</NavLink>
         </li>
       </ul>
 
@@ -22,7 +22,7 @@ export default props => {
           path="/"
           render={props => <Home name="Belal Ali Kazmi" {...props} />}
         />
-        <Route path="/todos" component={Todos} />
+        <Route path="/:page" component={StoryBoard} />
         <Route component={NotFound} />
       </Switch>
     </div>
