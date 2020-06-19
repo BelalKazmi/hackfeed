@@ -12,6 +12,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
     "serialize-javascript": "^4.0.0"
   },
   "scripts": {
@@ -19,9 +21,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development",
     "dev:start": "nodemon ./server-build/index.js",
-    "dev": "npm-run-all --parallel build dev:*"
+    "dev": "npm-run-all build dev:*"
   },
   "eslintConfig": {
     "extends": "react-app"
