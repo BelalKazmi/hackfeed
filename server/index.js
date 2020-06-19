@@ -17,10 +17,11 @@ app.use(express.static('./build'));
 
 global.stories =[]
 global.page = 1;
+global.pageCounter =0;
 const tag = 'story';
 const timeStamp = { startDate: 1577836800, endDate: 1580515200 };
 
-app.get('/api/:page', async (req, res, next) => {
+app.get('/api/story/:page', async (req, res, next) => {
   try {
     if (global.page === 1) {
       const response = await fetch(`http://hn.algolia.com/api/v1/search_by_date?tags=${tag}&page=${global.page}&numericFilters=created_at_i>${timeStamp.startDate},created_at_i<${timeStamp.endDate}`, {
@@ -39,6 +40,26 @@ app.get('/api/:page', async (req, res, next) => {
         global.stories = [...global.stories, ...data.hits];
         global.page += 1;
       }
+    }
+    res.send({ data: global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))) })
+  } catch (error) {
+    return next(error)
+  }
+})
+
+app.post('/api/hide/:page/:objectID', async(req,res,next)=>{
+  try {
+    const _id = req.params.objectID;
+    global.stories = global.stories.filter((story)=>(story.objectID!==_id));
+    global.pageCounter+=1;
+    if(global.pageCounter===20){
+      const response = await fetch(`http://hn.algolia.com/api/v1/search_by_date?tags=${tag}&page=${global.page}&numericFilters=created_at_i>${timeStamp.startDate},created_at_i<${timeStamp.endDate}`, {
+          method: "GET",
+        });
+        const data = await response.json()
+        global.stories = [...global.stories, ...data.hits];
+        global.page += 1;
+        global.pageCounter=0;
     }
     res.send({ data: global.stories.filter((data, key) => ((key >= ((parseInt(req.params.page) - 1) * 20))) && ((key < (parseInt(req.params.page)  * 20)))) })
   } catch (error) {
