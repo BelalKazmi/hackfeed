@@ -12,7 +12,7 @@ const Routes = [
   {
     path: '/:page',
     component: StoryBoard,
-    loadData: () => loadData('4')
+    loadData: (page) => loadData(page)
   },
   {
     component: NotFound

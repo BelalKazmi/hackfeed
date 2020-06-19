@@ -34,7 +34,7 @@ class StoryBoard extends React.Component {
 
   render() {
     const { data } = this.state;
-    return <ul>{data.map(story => <li id={story.objectID}>{story.title}</li>)}</ul>;
+    return <ul>{data.map((story,key) => <li id={story.objectID} key={key}>{story.title}</li>)}</ul>;
   }
 }
 
