@@ -1,12 +1,11 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import StoryBoard from './StoryBoard';
 import NotFound from './NotFound';
 
 export default props => {
   return (
-    <BrowserRouter>
       <Switch>
         <Route
           exact
@@ -16,6 +15,5 @@ export default props => {
         <Route path="/:page" component={StoryBoard} />
         <Route component={NotFound} />
       </Switch>
-      </BrowserRouter>
   );
 };
