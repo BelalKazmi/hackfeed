@@ -1,19 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
-import StoryBoard from './StoryBoard';
 import NotFound from './NotFound';
+import StoryBoard from './StoryBoard';
 
-export default props => {
+export default () => {
   return (
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={props => <Home name="Belal Ali Kazmi" {...props} />}
-        />
-        <Route path="/:page" component={StoryBoard} />
-        <Route component={NotFound} />
-      </Switch>
+    <Switch>
+      <Route exact path="/" render={() => <Home />} />
+      <Route path="/:page" component={StoryBoard} />
+      <Route component={NotFound} />
+    </Switch>
   );
 };
