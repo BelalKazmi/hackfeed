@@ -7,6 +7,7 @@ import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import serialize from 'serialize-javascript';
+import cors from 'cors';
 
 import App from '../src/App';
 import Routes from '../src/routes';
@@ -16,6 +17,7 @@ import storyController from './controllers/storyController';
 // import profileController from  './controllers/profileController';
 
 const app = express();
+app.use(cors());
 app.use(express.static('./build'));
 
 app.use('/api/news', newsController);
