@@ -1,10 +1,25 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import loadNewsFeed from '../../helpers/loadNewsFeed';
 import { DataContext } from './../../App';
 import actionTypes from '../../actions';
+import Card from '../../components/Card';
+import LinkButton from '../../components/LinkButton';
+
+const useStyles = makeStyles((theme) => ({
+  grid: {
+    textAlign: 'center',
+    height: '100vh',
+  },
+}));
 
 const NewsFeed = (props) => {
+  const classes = useStyles();
   const { state, dispatch } = useContext(DataContext);
 
   useEffect(() => {
@@ -43,16 +58,40 @@ const NewsFeed = (props) => {
 
   if (state.data[props.match.params.page]) {
     return (
-      <ul>
-        {state.data[props.match.params.page].map((story, key) => (
-          <li id={story.objectID} key={key}>
-            {story.title}
-          </li>
-        ))}
-      </ul>
+      <Grid container direction="column" wrap="nowrap" className={classes.grid}>
+        <Grid item xs={12}>
+          <Card data={state.data[props.match.params.page]} />
+        </Grid>
+        <Grid item xs={12}>
+          <LinkButton
+            to={`/news/${parseInt(props.match.params.page) - 1}`}
+            variant="outlined"
+            disabled={props.match.params.page === '1'}
+          >
+            PREV
+          </LinkButton>
+          <LinkButton
+            to={`/news/${parseInt(props.match.params.page) + 1}`}
+            variant="outlined"
+          >
+            NEXT
+          </LinkButton>
+        </Grid>
+      </Grid>
     );
   } else {
-    return null;
+    return (
+      <Grid container direction="column" wrap="nowrap" className={classes.grid}>
+        <Box mx="auto" p={3}>
+          <CircularProgress />
+        </Box>
+        <Box mx="auto">
+          <Typography variant="caption" align="center">
+            Loading Content !!
+          </Typography>
+        </Box>
+      </Grid>
+    );
   }
 };
 
