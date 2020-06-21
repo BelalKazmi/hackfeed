@@ -60,7 +60,7 @@ const NewsFeed = (props) => {
     return (
       <Grid container direction="column" wrap="nowrap" className={classes.grid}>
         <Grid item xs={12}>
-          <Card data={state.data[props.match.params.page]} />
+          <Card data={state.data} page={parseInt(props.match.params.page)} />
         </Grid>
         <Grid item xs={12}>
           <LinkButton
