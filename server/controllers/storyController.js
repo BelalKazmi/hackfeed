@@ -1,5 +1,5 @@
 import express from 'express';
-import { getStoryFromApi, getPaginatedStories } from '../services/helper';
+import { getNewsFromApi, getPaginatedStories } from '../services/helper';
 
 let router = express.Router();
 
@@ -9,7 +9,7 @@ router.post('/hide/:page/:objectID', (req, res) => {
     global.stories = global.stories.filter((story) => (story.objectID !== _id));
     global.pageCounter += 1;
     if (global.pageCounter === 20) {
-      const data = getStoryFromApi(global.page);
+      const data = getNewsFromApi(global.page);
       global.stories = [...global.stories, ...data.hits];
       global.page += 1;
       global.pageCounter = 0;
