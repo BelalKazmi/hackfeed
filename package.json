@@ -38,7 +38,10 @@
     "eject": "react-scripts eject",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development",
     "dev:start": "nodemon ./server-build/server.js",
-    "dev": "npm-run-all build dev:*"
+    "dev": "npm-run-all build dev:*",
+    "prod:build-server": "NODE_ENV=production webpack --config webpack.server.js --mode=production",
+    "prod:start": "nodemon ./server-build/server.js",
+    "prod": "npm-run-all build prod:*"
   },
   "eslintConfig": {
     "extends": "react-app"

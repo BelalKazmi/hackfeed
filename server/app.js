@@ -6,6 +6,7 @@ import React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
+import { ServerStyleSheets } from '@material-ui/core/styles';
 import serialize from 'serialize-javascript';
 import cors from 'cors';
 
@@ -52,12 +53,16 @@ app.get('/*', (req, res) => {
   promise.then(data => {
     // Let's add the data to the context
     const context = { data };
+    const sheets = new ServerStyleSheets();
     const app = ReactDOMServer.renderToString(
+      sheets.collect(
       <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
+      )
     );
 
+    const css = sheets.toString();
     const indexFile = path.resolve('./build/index.html');
     fs.readFile(indexFile, 'utf8', (err, indexData) => {
       if (err) {
@@ -75,6 +80,10 @@ app.get('/*', (req, res) => {
 
       return res.send(
         indexData
+          .replace(
+            '</title>',
+            `</title><style id="jss-server-side">${css}</style>`
+          )
           .replace('<div id="root"></div>', `<div id="root">${app}</div>`)
           .replace(
             '</body>',
