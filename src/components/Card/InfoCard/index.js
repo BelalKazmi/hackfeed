@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
   grid: {
     margin: [[0, theme.spacing(2)]],
   },
+  tag: {
+    margin: [[theme.spacing(1), theme.spacing(1), 0, 0]],
+  },
 }));
 
 const InfoCard = ({ title, url, tag }) => {
@@ -26,7 +29,9 @@ const InfoCard = ({ title, url, tag }) => {
         </Link>
       </Grid>
       <Grid item xs={12}>
-        <Chip size="small" label={tag} />
+        {tag.map((tag, key) => (
+          <Chip key={key} size="small" label={tag} className={classes.tag} />
+        ))}
       </Grid>
     </Grid>
   );
