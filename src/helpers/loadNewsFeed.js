@@ -1,7 +1,9 @@
 import 'isomorphic-fetch';
 
 export default (pageNumber) => {
-  return fetch(`http://localhost:3005/api/news/${pageNumber}`).then((res) => {
-    return res.json();
-  });
+  return fetch(`https://hackyfeed.herokuapp.com/api/news/${pageNumber}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
 };

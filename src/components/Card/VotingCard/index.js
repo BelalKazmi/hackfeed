@@ -32,7 +32,7 @@ const VotingCard = ({ id, page }) => {
 
   useEffect(() => {
     const story = state.data[parseInt(page)].filter(
-      (story) => story.objectID === id
+      (story) => story && story.objectID === id
     );
     setStoryState(story[0]);
     setVoteCount(story[0].points);
@@ -43,6 +43,21 @@ const VotingCard = ({ id, page }) => {
     data[parseInt(page)][
       state.data[parseInt(page)].indexOf(storyState)
     ].points = points;
+
+    dispatch({
+      type: actionTypes.setData,
+      payload: {
+        page: page,
+        data: data[page],
+      },
+    });
+  };
+
+  const hideStory = () => {
+    const data = state.data;
+    data[parseInt(page)][
+      state.data[parseInt(page)].indexOf(storyState)
+    ] = undefined;
 
     dispatch({
       type: actionTypes.setData,
@@ -85,7 +100,11 @@ const VotingCard = ({ id, page }) => {
             </IconButton>
           </Grid>
           <Grid item xs={12}>
-            <IconButton aria-label="delete" className={classes.margin}>
+            <IconButton
+              aria-label="delete"
+              className={classes.margin}
+              onClick={() => hideStory()}
+            >
               <VisibilityOffRoundedIcon fontSize="large" />
             </IconButton>
           </Grid>
