@@ -42,7 +42,7 @@
     "dev:start": "nodemon ./server-build/server.js",
     "dev": "npm-run-all react-build dev:*",
     "prod:build-server": "NODE_ENV=production webpack --config webpack.server.js --mode=production",
-    "prod:start": "nodemon ./server-build/server.js",
+    "prod:start": "node ./server-build/server.js",
     "build": "npm-run-all react-build prod:build-server"
   },
   "eslintConfig": {
