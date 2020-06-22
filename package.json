@@ -43,7 +43,8 @@
     "dev": "npm-run-all react-build dev:*",
     "prod:build-server": "NODE_ENV=production webpack --config webpack.server.js --mode=production",
     "prod:start": "node ./server-build/server.js",
-    "build": "npm-run-all react-build prod:build-server"
+    "build": "npm-run-all react-build prod:build-server",
+    "build:docker" : "docker build -t bkazmi/hackfeed ." 
   },
   "eslintConfig": {
     "extends": "react-app"
