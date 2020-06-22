@@ -16,12 +16,12 @@ script:
     - yarn build
     # build docker images
     - yarn build:docker
-    - docker tag bkazmi/hackyfeed registry.heroku.com/$HEROKU_APP_NAME/web
+    - docker tag bkazmi/hackyfeed:latest registry.heroku.com/$HEROKU_APP_NAME/web
 deploy:
     provider: script 
     script:
         # push to dockerhub
-        docker push bkazmi/hackyfeed
+        docker push bkazmi/hackyfeed:latest
         docker push registry.heroku.com/$HEROKU_APP_NAME/web
         heroku container:release web
     on:
