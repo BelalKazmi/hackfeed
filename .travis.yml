@@ -20,9 +20,9 @@ script:
 deploy:
     provider: script 
     script:
-        # push to dockerhub
-        docker push bkazmi/hackyfeed:latest
-        docker push registry.heroku.com/$HEROKU_APP_NAME/web
+        # push to dockerhub & heroku
+        docker push bkazmi/hackyfeed:latest;
+        docker push registry.heroku.com/$HEROKU_APP_NAME/web;
         heroku container:release web
     on:
         branch: master
