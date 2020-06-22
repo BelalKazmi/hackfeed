@@ -1,5 +1,4 @@
-sudo: required
- language: node_js 
+language: node_js
 node_js:
     - "9" 
 services:
@@ -22,8 +21,8 @@ deploy:
     provider: script 
     script:
         # push to dockerhub
-        docker push bkazmi/hackfeed;
-        docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-        heroku container: release web --app $ HEROKU_APP_NAME
-        on:
-            branch: master
+        docker push bkazmi/hackfeed
+        docker push registry.heroku.com/$HEROKU_APP_NAME/web
+    heroku container: release web --app $HEROKU_APP_NAME
+    on:
+        branch: master
