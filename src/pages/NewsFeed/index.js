@@ -107,7 +107,14 @@ const NewsFeed = (props) => {
     );
   } else {
     return (
-      <Grid container direction="column" wrap="nowrap" className={classes.grid}>
+      <Grid
+        container
+        direction="column"
+        wrap="nowrap"
+        className={classes.grid}
+        alignItems="center"
+        justify="center"
+      >
         <Box mx="auto" p={3}>
           <CircularProgress />
         </Box>

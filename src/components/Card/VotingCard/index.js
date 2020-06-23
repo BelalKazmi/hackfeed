@@ -11,10 +11,6 @@ import actionTypes from '../../../actions';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    margin: [[theme.spacing(2), theme.spacing(1)]],
-    borderRadius: '30%',
-    height: '75%',
-    width: '75%',
     border: '0.25em solid transparent',
     boxShadow: '0 0 0.125em 0.125em rgba(0, 0, 0, 0.5)',
   },
@@ -69,8 +65,8 @@ const VotingCard = ({ id, page }) => {
   };
 
   return (
-    <Grid container>
-      <Grid item xs={8}>
+    <Grid container alignItems="center">
+      <Grid item xs={6}>
         <Grid container className={classes.grid}>
           <Grid item xs={12}>
             {voteCount && (
@@ -88,11 +84,11 @@ const VotingCard = ({ id, page }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={6}>
         <Grid container>
           <Grid item xs={12}>
             <IconButton
-              aria-label="delete"
+              aria-label="vote"
               className={classes.margin}
               onClick={() => upVoted(voteCount + 1)}
             >
@@ -101,7 +97,7 @@ const VotingCard = ({ id, page }) => {
           </Grid>
           <Grid item xs={12}>
             <IconButton
-              aria-label="delete"
+              aria-label="hide"
               className={classes.margin}
               onClick={() => hideStory()}
             >

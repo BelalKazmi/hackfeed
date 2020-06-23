@@ -6,32 +6,45 @@ import Chip from '@material-ui/core/Chip';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    margin: [[0, theme.spacing(2)]],
+  link: {
     textDecoration: 'none',
+    '&:hover, &:focus, &:visited, &:link, &:active': {
+      textDecoration: 'none',
+    },
+  },
+  grid: {
+    padding: [theme.spacing(1)],
   },
   tag: {
     margin: [[theme.spacing(1), theme.spacing(1), 0, 0]],
   },
 }));
 
-const InfoCard = ({ title, url, tag }) => {
+const InfoCard = ({ title, tag, social }) => {
   const classes = useStyles();
   return (
-    <Link target="_blank" href={url}>
-      <Grid container className={classes.grid}>
-        <Grid item xs={12}>
-          <Typography variant="h6" align="left">
-            {title}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          {tag.map((tag, key) => (
+    <Grid container className={classes.grid}>
+      <Grid item xs={12}>
+        <Typography variant="h6">{title}</Typography>
+      </Grid>
+      <Grid item xs={12}>
+        {tag &&
+          tag.map((tag, key) => (
             <Chip key={key} size="small" label={tag} className={classes.tag} />
           ))}
-        </Grid>
+        {social &&
+          social.map((socialIcon, key) => (
+            <Link
+              target="_blank"
+              href={socialIcon.url}
+              className={classes.link}
+              key={key}
+            >
+              {socialIcon.Image}
+            </Link>
+          ))}
       </Grid>
-    </Link>
+    </Grid>
   );
 };
 
