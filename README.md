@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [HackyFeed](http://hackyfeed.herokuapp.com/) 👨‍💻
 
-## Available Scripts
+Hackyfeed is server-side-rendered app for getting stories from HackerNews api.
 
-In the project directory, you can run:
+✅ Create-React-App.  
+✅ Express-Build.  
+✅ Testing.  
+✅ Docker-Build.  
+✅ Docker-Tag.  
+✅ Docker-Push.  
+✅ Heroku-Deployment. 
 
-### `yarn start`
+All the above is being handled by [Travis](https://travis-ci.com/) 😎
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Installation
 
-### `yarn test`
+Use the [node](https://nodejs.org/en/) for installing the project dependencies
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn install
+```
 
-### `yarn build`
+## Usage
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the application locally on port:8080
+```
+yarn dev
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Deployment 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Deployment in Heroku (via Github integration)
+The repository can be directly deployed to Heroku via creating a webhook with the repository. 
 
-### `yarn eject`
+For the following, these are below features which have been included :  
+✅ Created webpack.server.js (Create an optimised build).  
+✅ It also runs the express app for the Api Integration  
+✅ Added ProcFile for default run command after deployment  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Deployment in Heroku (via Docker Image)
+The repository is using Travis for CI-CD and is using dockerized image which is deployed in Heroku  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For the following, these are below features which have been included :  
+✅ Created docker-compose.yml and Dockerfile.  
+✅ Created .travis.yml for CI-CD pipeline.  
+✅ Used environment variable for storing Heroku & Docker username/password  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Releases 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Releases  | Features                             | Date             | Status |
+|-----------|--------------------------------------|------------------|--------|
+| v 0\.1\.0 | Heroku App with Proc File            |  22nd June, 2020 | Released |
+| v 0\.1\.1 | Heroku Dockerized App with Travis CI |  23rd June, 2020 | Released |
+| v 0\.1\.2 | Google Analytics & Push Notification |  26th June, 2020 | On Track |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Contributing 🖊 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This repository is not used for contribution.  
+All issues found in the application are welcomed to be raised in the issue section ✌🏻
