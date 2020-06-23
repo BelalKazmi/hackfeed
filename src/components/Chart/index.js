@@ -1,7 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Chart from 'react-apexcharts';
+import loadable from 'loadable-components';
 
+const Chart = loadable(() => import('react-apexcharts'));
 const LineChart = ({ upVotesArray, userIdArray }) => {
   const maxVotes = Math.max(...upVotesArray);
   const options = {
