@@ -22,7 +22,7 @@ export default () => {
         <AvatarCard author="BelalKazmi" />
       </Grid>
       <Grid item xs={12} align="center">
-        <Typography variant="h1" align="center">
+        <Typography variant="h2" align="center">
           Belal Ali Kazmi
         </Typography>
       </Grid>

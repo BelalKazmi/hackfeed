@@ -22,7 +22,7 @@ const Card = ({ data, page }) => {
       {data[page].map((story, key) => {
         return (
           story && (
-            <Grid item xl={6} lg={6} md={6} sm={12} xs={12} key={key}>
+            <Grid item xs={12} key={key}>
               <Box boxShadow={2} m={3} p={1}>
                 <Grid container id={story.objectID}>
                   <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>

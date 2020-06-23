@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   grid: {
     margin: [[0, theme.spacing(2)]],
+    textDecoration: 'none',
   },
   tag: {
     margin: [[theme.spacing(1), theme.spacing(1), 0, 0]],
@@ -17,23 +18,20 @@ const useStyles = makeStyles((theme) => ({
 const InfoCard = ({ title, url, tag }) => {
   const classes = useStyles();
   return (
-    <Grid container className={classes.grid}>
-      <Grid item xs={12}>
-        <Typography variant="h6" align="left">
-          {title}
-        </Typography>
+    <Link target="_blank" href={url}>
+      <Grid container className={classes.grid}>
+        <Grid item xs={12}>
+          <Typography variant="h6" align="left">
+            {title}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          {tag.map((tag, key) => (
+            <Chip key={key} size="small" label={tag} className={classes.tag} />
+          ))}
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <Link target="_blank" href={url} variant="subtitle1">
-          Click here
-        </Link>
-      </Grid>
-      <Grid item xs={12}>
-        {tag.map((tag, key) => (
-          <Chip key={key} size="small" label={tag} className={classes.tag} />
-        ))}
-      </Grid>
-    </Grid>
+    </Link>
   );
 };
 

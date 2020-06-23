@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "apexcharts": "^3.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "husky": "^4.2.5",
@@ -16,6 +17,7 @@
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-apexcharts": "^1.3.7",
     "react-avatar": "^3.9.7",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
@@ -44,7 +46,7 @@
     "prod:build-server": "NODE_ENV=production webpack --config webpack.server.js --mode=production",
     "prod:start": "node ./server-build/server.js",
     "build": "npm-run-all react-build prod:build-server",
-    "build:docker" : "docker build -t bkazmi/hackyfeed ." 
+    "build:docker": "docker build -t bkazmi/hackyfeed ."
   },
   "eslintConfig": {
     "extends": "react-app"
