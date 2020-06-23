@@ -13,6 +13,7 @@ install:
     # install deps
     - yarn install
 script:
+    - yarn test
     - yarn build
     # build docker images
     - yarn build:docker

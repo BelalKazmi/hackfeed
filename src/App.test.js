@@ -5,10 +5,10 @@ import '@testing-library/jest-dom/extend-expect';
 import App from './App';
 
 test('render App correctly', () => {
-  const { container } = render(
+  const { getByText } = render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
   );
-  expect(screen.getByRole('link')).toHaveTextContent('Click to Connect');
+  expect(getByText('BLACK LIVES MATTER')).toBeInTheDocument();
 });

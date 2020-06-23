@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import StoryBoard from './StoryBoard';
+import StoryBoard from './';
 
-test('render App correctly', () => {
+test('render StoryBoard correctly', () => {
   const staticContext = {
     data: [
       {
