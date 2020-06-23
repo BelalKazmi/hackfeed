@@ -12,6 +12,13 @@ test('render StoryBoard correctly', () => {
       },
     ],
   };
-  const { container } = render(<StoryBoard staticContext={staticContext} />);
+  const match = {
+    params: {
+      page: '1',
+    },
+  };
+  const { container } = render(
+    <StoryBoard staticContext={staticContext} match={match} />
+  );
   expect(screen.getByRole('listitem')).toHaveTextContent('Belal');
 });
