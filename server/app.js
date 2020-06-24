@@ -20,7 +20,7 @@ import newsController from './controllers/newsController';
 
 const app = express();
 
-const whitelist = ['http://hackyfeed.herokuapp.com'];
+const whitelist = ['http://hackyfeed.herokuapp.com','https://hackyfeed.herokuapp.com'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
