@@ -9,7 +9,7 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import serialize from 'serialize-javascript';
-import cors from 'cors';
+// import cors from 'cors';
 
 import App from '../src/App';
 import Routes from '../src/routes';
@@ -20,6 +20,8 @@ import newsController from './controllers/newsController';
 
 const app = express();
 
+/*
+Removed Cors , will add later
 const whitelist = ['http://hackyfeed.herokuapp.com','https://hackyfeed.herokuapp.com'];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -31,6 +33,7 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions));
+*/
 app.use(bodyParser.json())
 app.use(express.static('./build'));
 
