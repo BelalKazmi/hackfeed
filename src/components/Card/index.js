@@ -30,8 +30,8 @@ const Card = ({ data, page }) => {
       {data[page].map((story, key) => {
         return (
           story && (
-            <Fade in={true} timeout={1000}>
-              <Grid item xs={12} key={key}>
+            <Fade in={true} timeout={1000} key={key}>
+              <Grid item xs={12}>
                 <Box boxShadow={5} m={2} p={1}>
                   <Grid container id={story.objectID}>
                     <Grid item xl={8} lg={8} md={8} sm={12} xs={12}>

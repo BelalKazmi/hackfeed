@@ -4,6 +4,7 @@ import fs from 'fs';
 
 import React from 'react';
 import express from 'express';
+import bodyParser from 'body-parser';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 import { ServerStyleSheets } from '@material-ui/core/styles';
@@ -14,15 +15,27 @@ import App from '../src/App';
 import Routes from '../src/routes';
 
 import newsController from './controllers/newsController';
-import storyController from './controllers/storyController';
+// import storyController from './controllers/storyController';
 // import profileController from  './controllers/profileController';
 
 const app = express();
-app.use(cors());
+
+const whitelist = ['http://hackyfeed.herokuapp.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions));
+app.use(bodyParser.json())
 app.use(express.static('./build'));
 
 app.use('/api/news', newsController);
-app.use('/api/story', storyController);
+// app.use('/api/story', storyController);
 // app.use ('/api/profile', profileController);
 
 global.stories = []
@@ -43,8 +56,8 @@ app.get('/*', (req, res) => {
   }
   else if (currentRoute.loadStory) {
     const page = req.url.split('/')[2];
-    const story = req.url.split('/')[3];
-    promise = currentRoute.loadStory(page, story);
+    const id = req.url.split('/')[3];
+    promise = currentRoute.loadStory(page, id);
   }
   else {
     promise = Promise.resolve(null);

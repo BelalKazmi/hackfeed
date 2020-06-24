@@ -20,4 +20,17 @@ router.get('/:page', async(req, res) => {
   res.send(getPaginatedStories(global.stories, requestedPage));
 });
 
+router.post('/hide', async (req, res) => {
+  const _id = req.body.objectID;
+  global.stories = global.stories.filter((story) => (story.objectID !== _id));
+  global.pageCounter += 1;
+  if (global.pageCounter === 20) {
+    const data = await getNewsFromApi(global.page);
+    global.stories = [...global.stories, ...data.hits];
+    global.page += 1;
+    global.pageCounter = 0;
+  }
+  res.send('OK')
+});
+
 export default router

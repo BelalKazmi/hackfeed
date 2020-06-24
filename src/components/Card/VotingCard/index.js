@@ -8,6 +8,8 @@ import ThumbUpAltRoundedIcon from '@material-ui/icons/ThumbUpAltRounded';
 import VisibilityOffRoundedIcon from '@material-ui/icons/VisibilityOffRounded';
 import { DataContext } from './../../../App';
 import actionTypes from '../../../actions';
+import loadNewsFeed from '../../../helpers/loadNewsFeed';
+import hideNews from '../../../helpers/hideNews';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -50,17 +52,16 @@ const VotingCard = ({ id, page }) => {
   };
 
   const hideStory = () => {
-    const data = state.data;
-    data[parseInt(page)][
-      state.data[parseInt(page)].indexOf(storyState)
-    ] = undefined;
-
-    dispatch({
-      type: actionTypes.setData,
-      payload: {
-        page: page,
-        data: data[page],
-      },
+    hideNews(id).then(() => {
+      loadNewsFeed(page).then((res) => {
+        dispatch({
+          type: actionTypes.setData,
+          payload: {
+            page: page,
+            data: res,
+          },
+        });
+      });
     });
   };
 

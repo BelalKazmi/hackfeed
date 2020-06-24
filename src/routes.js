@@ -24,10 +24,10 @@ const Routes = [
     loadNewsFeed: (page) => loadNewsFeed(page),
   },
   {
-    path: '/news/:page/:story',
+    path: '/news/:page/:id',
     exact: true,
     component: StoryBoard,
-    loadStory: (page, story) => loadStory(page, story),
+    loadStory: (page, id) => loadStory(page, id),
   },
   {
     component: NotFound,
