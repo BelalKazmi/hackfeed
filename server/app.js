@@ -104,7 +104,7 @@ app.get('/*', (req, res) => {
           .replace('<div id="root"></div>', `<div id="root">${app}</div>`)
           .replace(
             '</body>',
-            `<script defer>window.__ROUTE_DATA__ = ${serialize(data)}</script></body>`
+            `<script async>window.__ROUTE_DATA__ = ${serialize(data)}</script></body>`
           )
       );
     });
