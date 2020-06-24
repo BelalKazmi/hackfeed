@@ -1,21 +1,15 @@
-import React, { useReducer, lazy, Suspense } from 'react';
+import React, { useReducer } from 'react';
+import loadable from 'loadable-components';
 import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Loader from './pages/Loader';
 import reducer from './reducers';
 
 export const DataContext = React.createContext();
 
-const load = (Component) => (props) => (
-  <Suspense fallback={<Loader />}>
-    <Component {...props} />
-  </Suspense>
-);
-
-const NotFound = load(lazy(() => import('./pages/NotFound')));
-const Profile = load(lazy(() => import('./pages/Profile')));
-const NewsFeed = load(lazy(() => import('./pages/NewsFeed')));
-const StoryBoard = load(lazy(() => import('./pages/StoryBoard')));
+const NotFound = loadable(() => import('./pages/NotFound'));
+const Profile = loadable(() => import('./pages/Profile'));
+const NewsFeed = loadable(() => import('./pages/NewsFeed'));
+const StoryBoard = loadable(() => import('./pages/StoryBoard'));
 
 const initialState = {
   data: {},
