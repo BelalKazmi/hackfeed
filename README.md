@@ -55,6 +55,7 @@ For the following, these are below features which have been included :
 | v 0\.1\.0 | Heroku App with Proc File            |  22nd June, 2020 | Released |
 | v 0\.1\.1 | Heroku Dockerized App with Travis CI |  23rd June, 2020 | Released |
 | v 0\.1\.2 | Google Analytics & Push Notification |  26th June, 2020 | On Track |
+| v 0\.1\.3 | Comments Section & User Info |  28th June, 2020 | Not Started |
 
 
 ## Contributing 🖊 

@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import loadable from 'loadable-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import loadNewsFeed from '../../helpers/loadNewsFeed';
@@ -7,9 +8,9 @@ import { DataContext } from './../../App';
 import actionTypes from '../../actions';
 import Card from '../../components/Card';
 import LinkButton from '../../components/LinkButton';
-import LineChart from '../../components/Chart';
 import Loader from '../Loader';
 
+const LineChart = loadable(() => import('../../components/Chart'));
 const useStyles = makeStyles((theme) => ({
   grid: {
     textAlign: 'center',
