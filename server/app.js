@@ -4,6 +4,7 @@ import fs from 'fs';
 
 import React from 'react';
 import express from 'express';
+import gzipStatic from 'connect-gzip-static';
 import bodyParser from 'body-parser';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
@@ -36,7 +37,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 */
 app.use(bodyParser.json())
-app.use(express.static('./build'));
+app.use(gzipStatic('./build'));
 
 app.use('/api/news', newsController);
 // app.use('/api/story', storyController);

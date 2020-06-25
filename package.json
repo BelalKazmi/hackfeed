@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "apexcharts": "^3.19.2",
     "body-parser": "^1.19.0",
+    "connect-gzip-static": "^2.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "husky": "^4.2.5",
@@ -44,11 +45,12 @@
     "eject": "react-scripts eject",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development",
     "dev:start": "nodemon ./server-build/server.js",
-    "dev": "npm-run-all react-build dev:*",
+    "dev": "npm-run-all react-build postbuild dev:*",
     "prod:build-server": "NODE_ENV=production webpack --config webpack.server.js --mode=production",
     "prod:start": "node ./server-build/server.js",
     "build": "npm-run-all react-build prod:build-server",
-    "build:docker": "docker build -t bkazmi/hackyfeed ."
+    "build:docker": "docker build -t bkazmi/hackyfeed .",
+    "postbuild": "gzip build/static/js/*.js"
   },
   "eslintConfig": {
     "extends": "react-app"
