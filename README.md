@@ -1,4 +1,4 @@
-# [HackyFeed](http://hackyfeed.herokuapp.com/) 👨‍💻
+# 👨‍💻 [HackyFeed](http://hackyfeed.herokuapp.com/)  [![Build Status](https://travis-ci.com/BelalKazmi/hackfeed.svg?branch=master)](https://travis-ci.com/BelalKazmi/hackfeed)
 
 Hackyfeed is server-side-rendered app for getting stories from HackerNews api.
 
